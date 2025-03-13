@@ -1,0 +1,70 @@
+{{#> layout }}
+<h1 class="text-3xl mb-8 font-thin">Get your treasure</h1>
+<style>
+  @keyframes rolling {
+    0% {
+      background-position: 0 0;
+    }
+
+    100% {
+      background-position: var(--offset, -2560px) 0;
+    }
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  :root {
+    --duration: 10s;
+  }
+
+  .roll {
+    background-image: url(/all.webp);
+    background-size: cover;
+    background-image: url(/all.webp);
+
+    animation: rolling 2s linear infinite;
+    position: relative;
+
+    &::before, &::after {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      background: linear-gradient(to right, black 0%, transparent 35%, transparent 65%, black 100%);
+    }
+    &::before{
+
+      mix-blend-mode: hue;
+    }
+
+    --offset: calc({{lootId}} * -320px + 160px - 2240px * 8);
+  animation: rolling var(--duration) cubic-bezier(0.190, 1.000, 0.220, 1.000) forwards;
+  }
+
+  .name {
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
+    animation-delay: calc(var(--duration) - 2s);
+  }
+</style>
+
+<div class="flex flex-col items-center gap-4">
+  <div class="roll w-[640px] h-80 outline-2 outline-black rounded-lg overflow-clip "></div>
+  <div class="name text-2xl font-thin text-amber-600">{{loot.name}}</div>
+  <a href="/buy" class="hover:underline">Buy another box</a>
+</div>
+
+<script nonce="{{event.nonce}}">
+  document.querySelector("form").addEventListener("submit", (e) => {
+    document.querySelector("input[name=key]").value = Math.floor(Date.now() / 1000);
+  });
+</script>
+
+{{/layout}}

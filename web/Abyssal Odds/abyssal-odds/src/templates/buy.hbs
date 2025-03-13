@@ -1,0 +1,50 @@
+{{#> layout }}
+<h1 class="text-3xl mb-8 font-thin">Buy a box</h1>
+
+{{#if box}}
+<form method="POST" action="/open" class="flex flex-col items-center">
+  <input type="hidden" name="csrf_token" value="{{event.csrfToken}}" />
+  <input type="hidden" name="key" value="" />
+  <input type="hidden" name="boxId" value="{{box.id}}" />
+  <button name="action" value="open" type="submit">
+    <figure
+      class="cursor-not-allowed  {{#if hasEnoughCoins}}cursor-pointer hover:saturate-100{{/if}}  saturate-50  transition duration-500 hover:duration-100">
+      <img src="/key.webp" alt="box" class="rounded-t-lg size-80" />
+      <figcaption
+        class="text-xl font-bold bg-white/20 backdrop-blur p-2 rounded-b-lg capitalize flex justify-between items-baseline px-4 text-blue-200">
+
+        <div>Open the box</div>
+        <div id="key" class="font-mono text-xs flex items-end"></div>
+      </figcaption>
+    </figure>
+  </button>
+</form>
+<script nonce="{{event.nonce}}">
+  const keyEl = document.querySelector("input[name=key]");
+  const keyDisplayEl = document.querySelector("#key");
+
+  window.setInterval(() => {
+    const key = Math.floor(Math.random() * 100000000);
+    keyEl.value = key
+    keyDisplayEl.textContent = `${key}`.padStart(8, "0");
+  }, 100);
+</script>
+{{else}}
+<form action="/buy" method="POST" class="flex flex-col items-center">
+  <input type="hidden" name="csrf_token" value="{{event.csrfToken}}" />
+  <button name="action" value="buy" type="submit">
+    <figure
+      class="cursor-not-allowed  {{#if hasEnoughCoins}}cursor-pointer hover:saturate-100{{/if}}  saturate-50  transition duration-500 hover:duration-100">
+      <img src="/box.webp" alt="box" class="rounded-t-lg size-80" />
+      <figcaption
+        class="text-xl font-bold bg-white/20 backdrop-blur p-2 rounded-b-lg capitalize flex justify-between px-4 text-blue-200">
+
+        <div class="{{#unless hasEnoughCoins}}line-through{{/unless}}">Buy a box</div>
+        <div>{{price}} 🐚</div>
+      </figcaption>
+    </figure>
+  </button>
+</form>
+{{/if}}
+<div class="text-red-600 text-center mt-2">{{error}}</div>
+{{/layout}}

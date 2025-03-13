@@ -1,0 +1,15 @@
+{{#> layout }}
+<h1 class="text-3xl mb-8 font-thin">My Collection</h1>
+{{#if flag}}<div class="text-3xl text-amber-600 font-thin font-mono mb-4">{{flag}}</div>{{/if}}
+<div class="grid grid-cols-4 gap-4">
+  {{#each collection as |card|}}
+  <figure>
+    <img src="{{card.img}}" alt="{{card.name}}" class="rounded-t-lg {{#unless card.owned}}saturate-0{{/unless}}" />
+    <figcaption
+      class="text-xl font-bold bg-white/20 backdrop-blur p-2 rounded-b-lg capitalize text-center text-blue-200">
+      {{card.name}}</figcaption>
+  </figure>
+  {{/each}}
+</div>
+
+{{/layout}}

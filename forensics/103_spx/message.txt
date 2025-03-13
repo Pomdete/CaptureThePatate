@@ -1,0 +1,3 @@
+Si un jour je relis ce message, le mot de passe utilisé pour chiffrer mon plus grand secret était "vgrohhfyek0wkfi5fv13anexapy3sso6" et j'avais utilisé openssl.
+En revanche, j'ai effacé par erreur le fichier contenant mon plus grand secret (voir s'il existe des techniques de la mort pour le retrouver mon fichier secret.xz sha256(0fb08681c2f8db4d3c127c4c721018416cc9f9b369d5f5f9cf420b89ee5dfe4e) de 136 octets)
+et de toute façon, impossible de me rappeler de l'algo utilisé -_- (donc si je le retrouve... il faudra aussi retrouver l'algo pour utiliser ce mot de passe).

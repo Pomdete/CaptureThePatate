@@ -1,0 +1,16 @@
+version: "3"
+services:
+  abyssal-odds:
+    container_name: abyssal-odds
+    build: .
+    ports:
+      - "8000:3000"
+    environment:
+      - FLAG=FCSC{flag_placeholder}
+    
+    # You can uncomment the following lines to mount your local source code into the container 
+    # this will allow you to modify the code without having to rebuild the image each time.
+    
+    # entrypoint: ["pnpm", "dev"]
+    # volumes:
+    #   - ./src:/usr/src/app

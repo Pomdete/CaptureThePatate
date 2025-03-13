@@ -1,0 +1,5 @@
+services:
+  aarchibald:
+    image: anssi/fcsc2019-pwn-aarchibald:latest
+    ports:
+      - "4000:4000"

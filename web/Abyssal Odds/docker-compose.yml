@@ -1,0 +1,6 @@
+services:
+  abyssal-odds:
+    container_name: abyssal-odds
+    image: anssi/fcsc2024-web-abyssal-odds:latest
+    ports:
+      - "8000:3000"

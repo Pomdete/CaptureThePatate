@@ -1,0 +1,5 @@
+services:
+  tri-selectif:
+    image: anssi/fcsc2023-misc-tri-selectif:latest
+    ports:
+      - "4000:4000"
