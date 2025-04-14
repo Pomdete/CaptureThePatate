@@ -1,0 +1,5 @@
+services:
+  comparaison:
+    image: anssi/fcsc2023-hardware-asm-comparaison:latest
+    ports:
+      - "4000:4000"

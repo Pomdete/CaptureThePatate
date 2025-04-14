@@ -1,0 +1,7 @@
+CMP R5, R6
+JZA pareil
+MOV R0, #1
+STP
+pareil:
+MOV R0, #0
+STP
